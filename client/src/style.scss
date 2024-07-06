@@ -1,0 +1,62 @@
+$mediumblue: rgb(93, 126, 156);
+
+
+.app{
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    .container{
+
+        //LOGIN AND REGISTER
+        .auth{
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height:100vh;
+            background-color: $mediumblue;
+
+            h1{
+                font-size: 20px;
+                color: rgb(33, 45, 56);
+                margin-bottom: 20px;
+            }
+
+            form{
+                display: flex;
+                flex-direction: column;
+                padding: 50px;
+                background-color: white;
+                width: 200px;
+                gap: 20px;
+
+                input{
+                    padding: 10px;
+                    border: none;
+                    border-bottom: 1px solid gray;
+                }
+
+                button{
+                    padding: 10px;
+                    border: none;
+                    background-color: rgb(37, 82, 82);
+                    cursor: pointer;
+                    color: white;
+                }
+
+                p{
+                    color: red;
+                    font-size: 12px;
+                    text-align: center;
+                }
+
+                span{
+                    font-size: 12px;
+                    text-align: center;
+                }
+            }
+        }
+
+
+    }
+}
