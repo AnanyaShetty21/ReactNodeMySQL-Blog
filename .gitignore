@@ -1,10 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/client/node_modules
+/client/node_modules/
 /client/.pnp
 /client/.pnp.js
-/api/node_modules
+/api/node_modules/
 
 # testing
 /client/coverage
@@ -23,3 +23,27 @@
 /client/npm-debug.log*
 /client/yarn-debug.log*
 /client/yarn-error.log*
+/api/npm-debug.log*
+/api/yarn-debug.log*
+/api/yarn-error.log*
+
+# additional backend ignores
+
+# logs
+/api/logs
+/api*.log
+/api/logs/**/*.log
+
+# runtime data
+/api/pids
+/api*.pid
+/api*.seed
+/api*.pid.lock
+
+# directory for storing database-related data, if any
+/api/db.sqlite3
+/api/db/**/*.sqlite3
+
+# OS-specific files
+/api/.DS_Store
+/api/.vscode
