@@ -24,7 +24,7 @@ const Register = () =>{
             setError(err.response.data)
         }
         
-    }
+    };
 
     return(
         <div className="auth">
