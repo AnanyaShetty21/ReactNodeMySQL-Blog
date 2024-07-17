@@ -1,5 +1,6 @@
-import {db} from "../db.js"
-import bcrypt from "bcryptjs"
+import {db} from "../db.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export const register = (req, res)=>{
     
@@ -35,7 +36,19 @@ export const login = (req, res) =>{
 
         // CHECK PASSWORD
         const isPasswordCorrect = bcrypt.compareSync(req.body.password, data[0].password);
+        // "data" is an object that stores a "user" in it. data[0] returns the "user".
+
         if(!isPasswordCorrect) return res.status(400).json("Wrong password");
+
+        const token = jwt.sign({id:data[0].id}, "jwtkey");
+        // To seperate the password from user's other information
+        const {password, ...other} = data[0];
+        res.cookie("access_token", token, {
+            // Any scripts and applications from the browser cannot reach the cookie directly and
+            // this cookie will be used when we make only api requests
+            httpOnly: true
+              
+        }).status(200).json(data[0])
     })
 
 };
