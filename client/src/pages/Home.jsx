@@ -1,31 +1,53 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {Link, useLocation} from "react-router-dom";
 import pic1 from "../img/pic1.jpg";
 import pic2 from "../img/pic2.jpg";
 import pic3 from "../img/pic3.jpg";
+import axios from "axios";
 
 const Home = () => {
 
-    const posts =[
-        {
-            id: 1,
-            title: "Title 1",
-            desc: "Description 1",
-            img: pic1 //img: {pic} is wrong
-        },
-        {
-            id: 2,
-            title: "Title 2",
-            desc: "Description 2",
-            img: pic2
-        },
-        {
-            id: 3,
-            title: "Title 3",
-            desc: "Description 3",
-            img: pic3
-        }
-    ]
+    const [posts, setPosts] = useState([]);
+
+    const cat = useLocation().search;
+
+    useEffect(()=>{
+
+        const fetchData = async () => {
+            try{
+                const res = await axios.get(`/posts${cat}`);
+                setPosts(res.data);
+
+            }catch(err){
+                console.log(err);
+            }
+        };
+
+        fetchData()
+
+    },[cat]) // Empty array to ensure the effect runs only once
+
+
+    // const posts =[
+    //     {
+    //         id: 1,
+    //         title: "Title 1",
+    //         desc: "Description 1",
+    //         img: pic1 //img: {pic} is wrong
+    //     },
+    //     {
+    //         id: 2,
+    //         title: "Title 2",
+    //         desc: "Description 2",
+    //         img: pic2
+    //     },
+    //     {
+    //         id: 3,
+    //         title: "Title 3",
+    //         desc: "Description 3",
+    //         img: pic3
+    //     }
+    // ]
     return(
             <div className="home">
                 <div className="posts">
